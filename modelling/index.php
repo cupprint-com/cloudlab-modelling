@@ -1,14 +1,11 @@
-<?php 
-require_once 'inc/utilities.php';
-#   custom php page that is used to render the finished 3D image proof for customers 
+<?php
+define('CP_MODELLING_RUNNING',1);
 
-# 
+require_once 'inc/utilities.php';
+
 
 $util=new utilities();
 $result=$util->renderDesign();
-#var_dump($_SERVER);
-#var_dump($result);
-
 ?>
 
 <!DOCTYPE html>

@@ -1,6 +1,9 @@
 <?php
+if(!defined('CP_MODELLING_RUNNING')){
+    exit(1);
+}
 
-
+require_once 'constants.php';
 class utilities{
     # stores the api address (read from environment variable that is set up in apache conf)
     protected $api='';
@@ -8,9 +11,12 @@ class utilities{
     protected $key='';
     
     public function __construct() {
-        $this->api=getenv('cupprint-api');
-        $this->key=getenv('cupprint-key');
-        
+       # $this->api=getenv('cupprint-api');
+       # $this->key=getenv('cupprint-key');
+        $this->api=CP_API_ENDPOINT;
+        $this->key=CP_API_KEY;
+        $message="api ". $this->api . "  and key " . $this->key;
+        error_log($message);
     }
     
     
@@ -24,6 +30,7 @@ class utilities{
      */
     public function renderDesign(){
         $result = $this->getDesignCollateral();
+        
         $scene=$result['design3d'];
         $source=$result['url'].$result['designSource'];
         
